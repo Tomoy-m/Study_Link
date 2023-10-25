@@ -1,0 +1,83 @@
+// Place all the styles related to the mypages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.body {
+    overflow: hidden;
+}
+
+.back_color {
+    background-color: #000;
+    height: 300px;
+}
+.backimage {
+    position: relative;
+    width:100%;
+    object-fit: cover;
+    height: 300px;
+    // border-radius: 0% 0% 10% 10%;   /* 左上 | 右上 | 右下 | 左下 */
+    // border-bottom: 1px solid #a5a59e;
+    opacity: 0.6;
+}
+
+
+.icon_image {
+    position: absolute;
+    object-fit: cover;
+    width: 100px;
+    height: 100px;
+    left: 10%;
+    top: 210px;
+    object-fit: cover;
+    border-radius: 10% 10% 10% 10%;   /* 左上 | 右上 | 右下 | 左下 */
+    border: 3px solid white;
+    outline: 2px solid #333300;
+    // width: 75px;
+    // height: 75px;
+    // object-fit: cover;
+    // border-radius: 50%; #画像を円形に
+    // padding: 2px;
+    // border: 2px solid #333300;
+}
+
+
+.title_box {
+    position: absolute;
+    left: 10%;
+    transform: translateX(-10%);
+    top: 100px;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 30px;
+    font-weight: 50px;
+    mix-blend-mode:normal;
+}
+
+@media (max-width: 900px) {
+    .icon_image {
+        position: absolute;
+        object-fit: cover;
+        width: 100px;
+        height: 100px;
+        left: 50%;
+        top: 300px;
+        transform: translateX(-50%);
+        object-fit: cover;
+        border-radius: 50%;  //画像を円形に
+        border: 3px solid white;
+        outline: 2px solid #333300;
+    }
+
+    .main_box {
+        margin-top: 20px;
+    }
+
+    .profile_text {
+        position: relative;
+        left: 2%;
+        font-size: 20px;
+
+    }
+}
+
+

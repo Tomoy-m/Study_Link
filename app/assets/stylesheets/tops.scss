@@ -1,0 +1,251 @@
+// Place all the styles related to the tops controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+//loadingロゴアニメーション
+.start {
+	background: #FFF;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 9000;
+}
+
+.start_logo {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	z-index: 9999;
+}
+
+.start_image {
+    // width: 400px;
+    width: 280px;
+}
+
+// slickスライドショー
+.previews {
+    overflow: hidden;
+}
+
+// 背景は黒色（ 透化した部分は薄暗くなる）
+.slider {
+    background-color: #000;
+}
+
+// 画像のサイズ
+.slider img {
+    width: 100%;
+    height: 450px;
+}
+
+// 左右の画像を透化
+.slick-slide:not(.slick-center) {
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    transition: 0.3s ease 0s;
+} 
+
+// 矢印デフォルト
+.slick-prev:before,
+.slick-next:before {
+  font-size: 32px;
+}
+
+.slick-prev {
+  z-index: 1;
+  left: 20px;
+}
+
+.slick-next {
+  z-index: 1;
+  right: 20px;
+}
+
+//slickのドット
+.slick-dots li button:before{
+	font-size:15px!important;
+    margin-top: 10px;
+}
+
+// 画像テキスト
+// .title {
+//     position: absolute;
+//     object-fit: cover;
+//     top: 55%;
+//     margin-left: 4.4%;
+// }
+
+.inner_title {
+    position: absolute;
+    object-fit: cover;
+    top: 70%;
+    margin-left: 1%;
+}
+
+.link-text {
+    color: #fff;
+    font-family: "Arial";
+    font-size: 40px;
+}
+
+.slider a:hover {
+    color: goldenrod;
+}
+
+
+// スマホ用画像スライド
+@media (max-width: 900px) {
+    .slider img {
+        width: 100%;
+        height: 500px;
+    }
+
+    .slick-slide:not(.slick-center) {
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+    }
+
+    .text01, .text02, .text03, .text04 {
+        position: absolute;
+        // object-fit: cover;
+        color: #fff;
+        text-shadow: 3px 4px 4px #000;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        font-size: 35px;
+        top: 25%;
+        padding-left: 25px;
+    
+    }
+}
+
+//画像より下のテキスト
+.title-box {
+    margin-top: 40px;
+    margin-left: 10%;
+    width: 80%;
+    font-size: 30px;
+    font-family: "游ゴシック";
+    font-weight: bold;
+    padding-bottom: 5px;
+    border-bottom: 4px solid rgb(47, 58, 78);
+    color:rgb(47, 58, 78);
+}
+
+.about-box, .Music-box {
+    margin-left: 15%;
+}
+
+.about-title, .Music-title {
+    margin-top: 60px;
+    font-size: 40px;
+    font-family: 游ゴシック;
+    font-weight: bold;
+}
+
+
+/* スクロールをしたら出現する要素にはじめに透過0を指定 */  
+.fadeUpTrigger,
+.fadeLeftTrigger,
+.fadeRightTrigger{
+    opacity: 0;
+}
+
+/* fadeUp */
+
+.fadeUp{
+    animation-name:fadeUpAnime;
+    animation-duration: 3s;
+    animation-fill-mode:forwards;
+    opacity:0;
+}
+    
+
+@keyframes fadeUpAnime{
+    from {
+      opacity: 0;
+      transform: translateY(100px);    
+    }
+    
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+/* 左から */
+
+.fadeLeft{
+    animation-name:fadeLeftAnime;
+    animation-duration:3s;
+    animation-fill-mode:forwards;
+    opacity:0;
+}
+    
+@keyframes fadeLeftAnime{
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+    
+/* 右から */
+    
+.fadeRight{
+    animation-name:fadeRightAnime;
+    animation-duration:3s;
+    animation-fill-mode:forwards;
+    opacity:0;
+}
+    
+@keyframes fadeRightAnime{
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+}
+
+.cando-title {
+    margin-top: 100px;
+    font-size: 40px;
+    font-family: "游ゴシック";
+    font-weight: bold;
+}
+
+.cando-box {
+    margin-left: 50%;
+}
+
+.contents-box {
+    overflow: hidden;
+    margin-bottom: 50px;
+    text-align: center;
+    left: 0px;
+    width: 100%;
+}
+
+.Todo-title, .Calendar-title, .Tweets-title {
+    margin-top: 50px;
+}
+
+@media (max-width: 900px) {
+    .cando-title, .Music-title {
+        margin-top: 300px;
+    }
+}

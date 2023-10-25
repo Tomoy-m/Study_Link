@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学習記録Tweets</title>
+</head>
+<body>
+
+<header>
+<!--ヘッダーロゴ-->
+    <div class="main_logo">
+      <%= link_to "StudyLink", homes_path, class: "logo" %>
+    </div>
+
+<!--ハンバーガーメニュー-->
+    <div class="hamburger">
+      <div class="icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+<!--スマホ用ハンバーガーメニューのリスト-->
+    <nav class="sm">
+      <ul class="list">  <%# このサイト参照 https://zenn.dev/ganmo3/articles/8ae23a01dd1206 %>
+        <li><%= link_to "ホーム", homes_path, class: "sub_item" %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sub_item"  %></li>
+        <li><%= link_to "プロフィール編集", profile_path, class: "sub_item" %></li>
+        <li><%= link_to "マイページ", mypages_path, class: "sub_item"%></li>
+        <li><%= link_to "学習記録投稿", recodes_path, class: "sub_item" %></li>
+        <li><%= link_to "カレンダー", calendars_path, class: "sub_item" %></li>
+        <li><%= link_to "TODOリスト", todopages_path, class: "sub_item" %></li>
+      </ul>
+    </nav>
+
+<!--pc用ヘッダーリスト-->
+    <nav class="pc">  <!--pcクラスを追記-->
+      <ul class="pc_list">
+      <!-- Fontawesome + 文字でリンク -->
+        <li>
+          <%= link_to homes_path, class: "items" do %>
+            <i class="fas fa-home fa-lg fa-fw" ></i>ホーム
+          <% end %>
+        </li> 
+
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: "items" do %>
+            <i class="fas fa-sign-out fa-lg fa-fw" ></i>ログアウト
+          <% end %>
+        </li> 
+
+        <li>
+          <%= link_to profile_path, class: "items" do %>
+            <i class="fas fa-user-edit fa-lg fa-fw"></i>ユーザー
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+</header>
+<!-- ヘッダー閉じ -->
+
+<div class="recodes_box">
+<h1 class="recodes_title">学習記録Tweets</h1>
+
+<%= link_to new_recode_path, class: "recodes_new" do%>
+  <i class="fa-solid fa-circle-plus"></i>
+<% end %>
+
+<div class="recodes_container_box">
+  <% @recodes.each do |t| %>
+    <div class="recode_box">
+        <% if t.user.guest_user? %>
+          <%= image_tag "sample.jpg", class: 'icon_cycle_image', size: '50x50' %>
+        <% else %>
+          <%= image_tag t.user.avatar.url, class: 'icon_cycle_image', size: '50x50' %><br>
+        <% end %>
+        名前 : <%= t.user.name %><br>
+        日付 : <%= t.date %><br>
+        学習時間 : <%= t.start_time.strftime("%H:%M") %> ～ <%= t.finish_time.strftime("%H:%M") %><br>
+        タイトル : <%= t.title %><br>
+        内容 : <%= t.content %><br>
+        <%= link_to "編集する", edit_recode_path(t.id) %>
+        <%= link_to "削除する", recode_path(t.id), method: :delete %>
+    </div>
+  <% end %>
+</div>
+<%= link_to ">>Home", homes_path %>
+</div>
+</body>
+</html>

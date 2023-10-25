@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  classroom: MyString
+  teacher: MyString
+  start_time: 2023-09-28 01:29:49
+  finish_time: 2023-09-28 01:29:49
+  credit: 1
+
+two:
+  title: MyString
+  classroom: MyString
+  teacher: MyString
+  start_time: 2023-09-28 01:29:49
+  finish_time: 2023-09-28 01:29:49
+  credit: 1

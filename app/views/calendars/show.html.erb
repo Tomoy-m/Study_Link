@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+<header>
+<!--ヘッダーロゴ-->
+    <div class="main_logo">
+      <%= link_to "StudyLink", homes_path, class: "logo" %>
+    </div>
+
+<!--ハンバーガーメニュー-->
+    <div class="hamburger">
+      <div class="icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+<!--スマホ用ハンバーガーメニューのリスト-->
+    <nav class="sm">
+      <ul class="list">  <%# このサイト参照 https://zenn.dev/ganmo3/articles/8ae23a01dd1206 %>
+        <li><%= link_to "ホーム", homes_path, class: "sub_item" %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sub_item"  %></li>
+        <li><%= link_to "プロフィール編集", profile_path, class: "sub_item" %></li>
+        <li><%= link_to "マイページ", mypages_path, class: "sub_item"%></li>
+        <li><%= link_to "学習記録投稿", recodes_path, class: "sub_item" %></li>
+        <li><%= link_to "カレンダー", calendars_path, class: "sub_item" %></li>
+        <li><%= link_to "TODOリスト", todopages_path, class: "sub_item" %></li>
+      </ul>
+    </nav>
+
+<!--pc用ヘッダーリスト-->
+    <nav class="pc">  <!--pcクラスを追記-->
+      <ul class="pc_list">
+      <!-- Fontawesome + 文字でリンク -->
+        <li>
+          <%= link_to homes_path, class: "items" do %>
+            <i class="fas fa-home fa-lg fa-fw" ></i>ホーム
+          <% end %>
+        </li> 
+
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: "items" do %>
+            <i class="fas fa-sign-out fa-lg fa-fw" ></i>ログアウト
+          <% end %>
+        </li> 
+        
+        <li>
+          <%= link_to profile_path, class: "items" do %>
+            <i class="fas fa-user-edit fa-lg fa-fw"></i>ユーザー編集
+          <% end %>
+        </li>
+
+      </ul>
+    </nav>
+</header>
+<!-- ヘッダー閉じ -->
+
+<div class="calendar_show_box">
+<h1 class="calendar_show_title">スケジュール詳細</h1>
+<div class="show">
+<p>
+  <strong>タイトル</strong>
+  <%= @calendar.title %>
+</p>
+
+<p>
+  <strong>内容</strong>
+  <%= @calendar.content %>
+</p>
+
+<p>
+  <strong>日時</strong>
+  <%= @calendar.start_time.strftime("%m-%d") %>
+</p>
+<%= link_to '>>戻る', calendars_path %>
+<%= link_to '編集', edit_calendar_path(@calendar) %>
+<%= link_to '消去',calendar_path(@calendar.id), method: :delete, data: { confirm: '本当に?' } %>
+</div>
+</div>
+</body>
+</html>

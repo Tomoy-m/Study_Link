@@ -1,0 +1,55 @@
+// Place all the styles related to the recodes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.recodes_box {
+    margin-bottom: 500px;
+}
+.recodes_title {
+    position: relative;
+    left: 10%;
+    width: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #000;
+}
+
+.recodes_new {
+    position: fixed;
+    z-index: 500;
+    top: 80%;
+    left: 90%;
+    font-size: 50px;
+    color: blue;
+}
+
+.recodes_container_box {
+    text-align: center;
+}
+
+.recode_box {
+    border: 2px solid #000;
+    margin-left: 25%;
+    width: 50%;
+    margin-bottom: 10px;
+}
+
+.icon_cycle_image {
+    position: absolute;
+    margin-top: 5%;
+    left: 30%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;  //画像を円形に
+    border: 2px solid white;
+    outline: 2px solid #333300;
+}
+
+@media (max-width: 900px) {   
+
+}
+

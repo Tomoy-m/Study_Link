@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit</title></title>
+</head>
+<body>
+
+<header>
+<!--ヘッダーロゴ-->
+    <div class="main_logo">
+      <%= link_to "StudyLink", homes_path, class: "logo" %>
+    </div>
+
+<!--ハンバーガーメニュー-->
+    <div class="hamburger">
+      <div class="icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+<!--スマホ用ハンバーガーメニューのリスト-->
+    <nav class="sm">
+      <ul class="list">  <%# このサイト参照 https://zenn.dev/ganmo3/articles/8ae23a01dd1206 %>
+        <li><%= link_to "ホーム", homes_path, class: "sub_item" %></li>
+        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sub_item"  %></li>
+        <li><%= link_to "プロフィール編集", profile_path, class: "sub_item" %></li>
+        <li><%= link_to "マイページ", mypages_path, class: "sub_item"%></li>
+        <li><%= link_to "学習記録投稿", recodes_path, class: "sub_item" %></li>
+        <li><%= link_to "カレンダー", calendars_path, class: "sub_item" %></li>
+        <li><%= link_to "TODOリスト", todopages_path, class: "sub_item" %></li>
+      </ul>
+    </nav>
+
+<!--pc用ヘッダーリスト-->
+    <nav class="pc">  <!--pcクラスを追記-->
+      <ul class="pc_list">
+      <!-- Fontawesome + 文字でリンク -->
+        <li>
+          <%= link_to homes_path, class: "items" do %>
+            <i class="fas fa-home fa-lg fa-fw" ></i>Home
+          <% end %>
+        </li> 
+
+        <li>
+          <%= link_to destroy_user_session_path, method: :delete, class: "items" do %>
+            <i class="fas fa-sign-out fa-lg fa-fw" ></i>Logout
+          <% end %>
+        </li> 
+
+        <li>
+          <%= link_to profile_path, class: "items" do %>
+            <i class="fas fa-user-edit fa-lg fa-fw"></i>Useredit
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+</header>
+<!-- ヘッダー閉じ -->
+
+
+<%= form_for @recode do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, :size => 140 %> 
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <%= f.label :time %>
+  <%= f.time_field :start_time %> ～ <%= f.time_field :finish_time %>
+  <%= f.label :content %>
+  <%= f.text_area :content, :size => 140 %>
+  <%= f.submit "編集する" %>
+<% end %>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>  
+    <h1>時間割投稿</h1>
+    <%= form_for @timetable do |f| %>
+      科目名：<%= f.text_field :title %><br>
+      クラス：<%= f.text_field :classroom %><br>
+      講師名：<%= f.text_field :teacher %><br>
+      単位：<%= f.number_field :credit %><br>
+      時間：<%= f.time_field :start_time %> ～ <%= f.time_field :finish_time %><br>
+      <%= f.submit "登録" %><br>
+    <% end %>
+
+</body>
+</html>
