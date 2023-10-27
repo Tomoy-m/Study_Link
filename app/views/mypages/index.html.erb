@@ -76,16 +76,11 @@
     <% end %>
   </div>
 
-
+  <p id="RealtimeClockArea2">※ここに時計が表示されます。</p>
 
   <div class="main_box">
     <h1 class="profile_text">プロフィール</h1>
-    <h1 class="title_box">Welcome to <%= current_user.name%> mypage</h1>
-    <p id="realtime"></p>
-    <div>
-    <p><%= current_user.name%>さんがログインしています</p>
-    <div>
-<%= link_to '編集', edit_profile_path, class: 'btn btn-success float-right' %>
+  
     <% if current_user.guest_user? %>
       <p>※ゲストユーザーは編集できません</p>
       <p>メールアドレス : <%= current_user.email %></p>
