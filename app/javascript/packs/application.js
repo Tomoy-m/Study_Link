@@ -12,9 +12,8 @@ require("jquery")
 require("menu.js")
 require("slick.js")
 require("loading.js")
-require("time.js")
 require("fadein.js")
-
+require("time.js")
 
 Rails.start()
 Turbolinks.start()

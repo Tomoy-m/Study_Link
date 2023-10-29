@@ -1,4 +1,6 @@
 class MusicsController < ApplicationController
+    before_action :authenticate_user!
+
     def index
         @musics = Music.all
         @music = Music.new

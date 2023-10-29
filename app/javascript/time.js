@@ -1,18 +1,19 @@
-$(document).on('turbolinks:load', function() {
-function set2fig(num) {
-  // 桁数が1桁だったら先頭に0を加えて2桁に調整する
-  var ret;
-  if( num < 10 ) { ret = "0" + num; }
-  else { ret = num; }
-  return ret;
-}
-function showClock2() {
-  var nowTime = new Date();
-  var nowHour = set2fig( nowTime.getHours() );
-  var nowMin  = set2fig( nowTime.getMinutes() );
-  var nowSec  = set2fig( nowTime.getSeconds() );
-  var msg = "現在時刻は、" + nowHour + ":" + nowMin + ":" + nowSec + " です。";
-  document.getElementById("RealtimeClockArea2").innerHTML = msg;
-}
-setInterval('showClock2()',1000);
-});
+//時間表示
+setInterval(function(){
+  var h = new Date().getHours();
+  var min = new Date().getMinutes();
+  var s = new Date().getSeconds();
+  $("#realtime").html( h + ":" + min + ":" + s);
+},1000);
+
+//日付
+setInterval(function(){
+  var y = new Date().getFullYear();
+  var m = new Date().getMonth() + 1;
+  var d = new Date().getDate();
+  var w = new Date().getDay();
+  var wd = ["日","月","火","水","木","金","土"];
+  var youbi = wd[w];
+  $("#days").html(y + "年" + m + "月" + d + "日" + "（" + youbi + ")");
+},1000);
+// 参考サイト https://web.skipjack.tokyo/javascript/jquery_date/

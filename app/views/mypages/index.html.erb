@@ -1,114 +1,104 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mypage</title>
-    <style>
-
-  </style>
-  
 </head>
+
 <body>
 
-<header>
+<!--ヘッダー-->
+<header>  
 <!--ヘッダーロゴ-->
-    <div class="main_logo">
-      <%= link_to "StudyLink", homes_path, class: "logo" %>
-    </div>
+  <div class="main_logo">
+    <%= link_to "StudyLink", homes_path, class: "logo" %>
+  </div>
 
 <!--ハンバーガーメニュー-->
-    <div class="hamburger">
-      <div class="icon">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
 <!--スマホ用ハンバーガーメニューのリスト-->
-    <nav class="sm">
-      <ul class="list">  <%# このサイト参照 https://zenn.dev/ganmo3/articles/8ae23a01dd1206 %>
-        <li><%= link_to "ホーム", homes_path, class: "sub_item" %></li>
-        <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sub_item"  %></li>
-        <li><%= link_to "プロフィール編集", profile_path, class: "sub_item" %></li>
-        <li><%= link_to "マイページ", mypages_path, class: "sub_item"%></li>
-        <li><%= link_to "学習記録投稿", recodes_path, class: "sub_item" %></li>
-        <li><%= link_to "カレンダー", calendars_path, class: "sub_item" %></li>
-        <li><%= link_to "TODOリスト", todopages_path, class: "sub_item" %></li>
-      </ul>
-    </nav>
+  <nav class="sm">
+    <ul class="list">  <%# このサイト参照 https://zenn.dev/ganmo3/articles/8ae23a01dd1206 %>
+      <li><%= link_to "ホーム", homes_path, class: "sub_item" %></li>
+      <li><%= link_to "マイページ", mypages_path, class: "sub_item"%></li>
+      <li><%= link_to "プロフィール編集", profile_path, class: "sub_item" %></li>
+      <li><%= link_to "TODOリスト", todopages_path, class: "sub_item" %></li>
+      <li><%= link_to "カレンダー", calendars_path, class: "sub_item" %></li>
+      <li><%= link_to "学習記録投稿", recodes_path, class: "sub_item" %></li>
+      <li><%= link_to "音楽ページ", musics_path, class: "sub_item" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "sub_item"  %></li>
+    </ul>
+  </nav>
 
 <!--pc用ヘッダーリスト-->
-    <nav class="pc">  <!--pcクラスを追記-->
-      <ul class="pc_list">
-      <!-- Fontawesome + 文字でリンク -->
-         <li>
-          <%= link_to homes_path, class: "items" do %>
-            <i class="fas fa-home fa-lg fa-fw" ></i>ホーム
-          <% end %>
-        </li> 
+  <nav class="pc">  <!--pcクラスを追記-->
+    <ul class="pc_list">
+    <!-- Fontawesome + 文字でリンク -->
+      <li>
+      <%= link_to homes_path, class: "items" do %>
+        <i class="fas fa-home fa-lg fa-fw" ></i>ホーム
+      <% end %>
+      </li> 
 
-        <li>
-          <%= link_to destroy_user_session_path, method: :delete, class: "items" do %>
-            <i class="fas fa-sign-out fa-lg fa-fw" ></i>ログアウト
-          <% end %>
-        </li> 
-
-        <li>
-          <%= link_to profile_path, class: "items" do %>
-            <i class="fas fa-user-edit fa-lg fa-fw"></i>ユーザー
-          <% end %>
-        </li>
-      </ul>
-    </nav>
+      <li>
+      <%= link_to mypages_path, class: "items" do %>
+        <i class="fas fa-user fa-lg fa-fw"></i>マイページ
+      <% end %>
+      </li>
+    </ul>
+  </nav>
 </header>
 <!-- ヘッダー閉じ -->
 
-
 <main>
-  <div>
-    <p class="back_color"><%= image_tag current_user.backimage.url, class: "backimage" %></p>
-    <% if current_user.guest_user? %>
-      <p><%= image_tag "sample.jpg", class: "icon_image" %></p>
-    <% else %>
-      <p><%= image_tag current_user.avatar.url, class: "icon_image" %></p>
-    <% end %>
+  <div class="container_box">
+    <!--背景画像 -->
+    <p class="back_color">
+      <%= image_tag current_user.backimage.url, class: "backimage" %>
+    </p>
+    <!--js 時刻表示 -->
+    <div class="time_box">
+      <p id="days", class="days"></p>
+      <p id="realtime", class="realtime"></p>
+    </div>
+    
+    <!--プロフィール-->
+    <div class="profile_mainbox">
+      <div>
+        <% if current_user.guest_user? %>  
+          <p><%= image_tag "sample.jpg", class: "icon_image" %></p>  <!--ゲストならサンプルアイコン-->
+        <% else %>
+          <p><%= image_tag current_user.avatar.url, class: "icon_image" %></p>  <!--ゲスト以外のユーザーは登録or初期アイコン -->
+        <% end %>
+      </div>
+
+      <div class="profile_box">
+        <h1 class="profile_text">プロフィール</h1>
+        <ul>
+          <% if current_user.guest_user? %>
+            <li>※ゲストユーザーは編集できません</li>
+            <li>メールアドレス : <%= current_user.email %></li>
+            <li>ユーザ : <%= current_user.name %></li>
+          <% else %>
+            <li>メールアドレス : <%= current_user.email %></li>
+            <li>ユーザ : <%= current_user.name %></li>
+            <li>性別 : <%= current_user.gender %></li>
+            <li>年齢 : <%= current_user.age %></li>
+            <li>出身地 : <%= current_user.address %></li>
+            <%= link_to '編集', edit_profile_path %>
+            <%= link_to 'パスワード変更', edit_user_registration_path %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
   </div>
-
-  <p id="RealtimeClockArea2">※ここに時計が表示されます。</p>
-
-  <div class="main_box">
-    <h1 class="profile_text">プロフィール</h1>
-  
-    <% if current_user.guest_user? %>
-      <p>※ゲストユーザーは編集できません</p>
-      <p>メールアドレス : <%= current_user.email %></p>
-      <p>ユーザ名 : <%= current_user.name %></p>
-    <% else %>
-    <ul>
-      <li>メールアドレス : <%= current_user.email %></li>
-      <li>ユーザ名 : <%= current_user.name %></li>
-      <li>性別 : <%= current_user.gender %></li>
-      <li>年齢 : <%= current_user.age %></li>
-      <li>出身地 : <%= current_user.address %></li>
-      <li>自己紹介文 : <%= current_user.self_introduction %></li>
-    </ul>
-
-    <%= link_to '編集', edit_profile_path, class: 'btn btn-success float-right' %>
-    <% end %>
-  <%= link_to 'パスワード変更', edit_user_registration_path %>
-  
-    <%= link_to "学習記録投稿", recodes_path %>
-    <%= link_to "カレンダー", calendars_path %>
-    <%= link_to "TODOリスト", todopages_path %>
-    <%= link_to "プロフィール編集", profile_path %>
-    <%= link_to "時間割", timetables_path %>
-    <%= link_to "音楽", musics_path %>
-  </div>
-
-
-  </body>
+</body>
 </html>
 
 

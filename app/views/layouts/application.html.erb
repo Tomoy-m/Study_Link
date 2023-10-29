@@ -15,42 +15,51 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="wrapper">  <!--ヘッダー上部からフッターの高さ指定-->
       <%= yield %>
+
+  <!--共有フッター-->
   <footer>
-    <div class="footer-title"><p class="footer-logo">Study Link</p></div>
-    <div class="footer-box">
-    <div class="foot-wrap">
-      <div class="menu-left">
+    <!--一番上のタイトルボックス -->
+    <div class="footer-title">
+      <p class="footer-logo">Study Link</p>
+    </div>
     
+    <!--真ん中のボックス-->
+      <div class="footer-box">
+        <div class="foot-wrap">       
+          <div class="menu-left">  <!--左 -->
             <h3 class="menu-top">概要</h3>
             <ul class="foot-left">
                 <li><%= link_to "トップ", tops_path %></li>
                 <li><%= link_to "ホーム", homes_path%></li>
                 <li><%= link_to "マイページ", mypages_path %></li>
             </ul>
+          </div>
+          
+          <div class="menu-center">  <!--真ん中 -->
+                <h3 class="menu-top">サインイン</h3>
+                <ul class="foot-center">
+                    <li><%= link_to "ログイン", new_user_session_path %></li>
+                    <li><%= link_to "新規登録", new_user_registration_path %></li>
+                    <li><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %></li>
+                </ul>
+          </div>
+           
+          <div class="menu-right">  <!--右 -->
+                <h3 class="menu-top">コンテンツ一覧</h3>
+                <ul class="foot-right">
+                    <li><%= link_to "TODOリスト", todopages_path %></li>
+                    <li><%= link_to "カレンダー", calendars_path %></li>
+                    <li><%= link_to "学習記録投稿", recodes_path %></li>
+                </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="menu-center">
-            <h3 class="menu-top">サインイン</h3>
-            <ul class="foot-center">
-                <li><%= link_to "ログイン", new_user_session_path %></li>
-                <li><%= link_to "新規登録", new_user_registration_path %></li>
-                <li><%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %></li>
-            </ul>
-      </div>
-      <div class="menu-right">
-            <h3 class="menu-top">コンテンツ一覧</h3>
-            <ul class="foot-right">
-                <li><%= link_to "TODOリスト", todopages_path %></li>
-                <li><%= link_to "カレンダー", calendars_path %></li>
-                <li><%= link_to "学習記録投稿", recodes_path %></li>
-            </ul>
-      </div>
-    </div>
-    </div>
-  <p class="copyrigth">Copyright ©2023 Tomoya</p>
+    <!--一番下のcopyright ボックス-->
+    <p class="copyrigth">Copyright ©2023 Tomoya</p>
   </footer>
-  </div>
+    </div>
   </body>
 </html>

@@ -62,6 +62,17 @@
 <!-- ヘッダー閉じ -->
 
 <main>
+  <div>
+    <h1>Music</h1>
+    <p class="sample">ピアノ</p>
+    <!-- audio_tag 音楽再生-->
+    <%= audio_tag "piano.mp3", :controls => true %>
+
+    <p class="sample">環境音</p>
+    <!-- audio_tag 音楽再生-->
+    <%= audio_tag "nature.mp3", :controls => true %>
+
+
     <!--投稿された音楽再生-->
     <% @musics.each do |t| %>
         <audio src= "<%= "#{t.file}" %>" controls >
