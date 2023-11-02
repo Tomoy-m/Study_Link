@@ -66,6 +66,12 @@
          <%= f.hidden_field :avatar_cache %>
       </li>
 
+        <li>
+          背景画像
+          <%= f.file_field :backimage ,class: 'form-control mb-3', accept: 'image/*' %>
+          <%= f.hidden_field :avatar_cache %>
+      </li>
+
       <li>
          メールアドレス<%= f.email_field :email, class: 'form-control mb-3' %>     
       </li>
@@ -90,8 +96,6 @@
 
 <%end%>
 <%= link_to "戻る", :back %>
-
-<%= link_to "「マイページ」へ", mypages_path %>
 </main>
 </body>
 </html>

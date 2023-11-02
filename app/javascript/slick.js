@@ -2,10 +2,10 @@ $(document).on('turbolinks:load', function() {
    $('.slider').slick({
     dots: true,
     speed: 500,
-    autoplaySpeed: 8000,
+    // autoplaySpeed: 8000,
     arrows: true,
     // cssEase: 'linear',
-    autoplay: true,
+    // autoplay: true,
     slidesToScroll: 1,
     adaptiveHeight: true,
     centerMode: true,
