@@ -60,3 +60,10 @@ gem "jquery-rails"
 gem 'rails-i18n'
 gem 'audiojs-rails'
 gem 'cloudinary'
+gem "dockerfile-rails", ">= 1.5", :group => :development
+
+gem "redis", "~> 5.0"
+
+gem "sentry-ruby", "~> 5.12"
+
+gem "sentry-rails", "~> 5.12"
