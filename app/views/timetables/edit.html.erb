@@ -57,8 +57,8 @@
 <!-- ヘッダー閉じ -->
 
 <main>
-  <div class="timetable_box">
-  <h1 class="timetable_title">時間割投稿</h1>
+<div class="timetable_box">
+  <h1 class="timetable_title">時間割編集</h1>
     <%= form_for @timetable do |f| %>
     <table border="1", class="timetable_table">
       <tr>
@@ -259,11 +259,11 @@
       </tr>
     </table>
     <div class="timetable_submit_box">
-      <%= f.submit "登録", class: "timetable_submit" %>
+      <%= f.submit "編集", class: "timetable_submit" %>
     </div>
   <% end %>
   <div class="timetable_back">
-  <%= link_to ">>戻る", timetables_path %>
+  <%= link_to "戻る", timetables_path %>
   </div>
 </div>
 </main>

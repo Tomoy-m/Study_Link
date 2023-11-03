@@ -33,7 +33,7 @@ class TimetablesController < ApplicationController
     end
 
     def destroy
-        @timetable = Timetalbe.find(params[:id])
+        @timetable = Timetable.find(params[:id])
         @timetable.destroy
         redirect_to timetables_path, notice:"削除しました"
     end
