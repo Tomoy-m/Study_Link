@@ -30,6 +30,7 @@
       <li><%= link_to "マイページ", mypages_path, class: "sub_item"%></li>
       <li><%= link_to "TODOリスト", todopages_path, class: "sub_item" %></li>
       <li><%= link_to "カレンダー", calendars_path, class: "sub_item" %></li>
+      <li><%= link_to "時間割", timetables_path, class: "sub_item" %></li>
       <li><%= link_to "学習記録投稿", recodes_path, class: "sub_item" %></li>
       <li><%= link_to "音楽ページ", musics_path, class: "sub_item" %></li>
     </ul>
@@ -150,12 +151,16 @@
 
   <div class="contents-box">
     <h2 class="Todo-title">Todoリスト</h2>
-      <p>大学での課題やレポートの出し忘れを防ぎます。</p>
+      <p>大学での課題やレポートの出し忘れを防ぎます!</p>
       <p> &gt;&gt;ページは<%= link_to "こちら", todopages_path %></p>
 
     <h2 class="Calendar-title">Calendar</h2>
       <p>スケジュール管理もこれひとつ！</p>
       <p> &gt;&gt;ページは<%= link_to "こちら", calendars_path %></p>
+
+    <h2 class="Timetables-title">時間割</h2>
+      <p>大学の時間割を管理しよう!</p>
+      <p> &gt;&gt;ページは<%= link_to "こちら", timetables_path %></p>
 
     <h2 class="Tweets-title">学習Tweet</h2>
       <p>学習した記録を友達と共有しよう！</p>
